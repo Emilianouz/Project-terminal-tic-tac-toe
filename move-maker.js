@@ -27,16 +27,18 @@ function validateMove(move, board) {
 }
     if(!move.every(num=>num>=1 && num<=3)){console.log("Number not in range"); return false};
     
+    if(!board.some(row=>row.includes("_"))) {console.log("No empty space"); return false};
+    
     
 
     return true       
 }
-console.log(validateMove([1,"n"]))
-console.log(validateMove([1, 2]));
-console.log(validateMove([1, 3,7]));
-console.log(validateMove([1, -9]));
-console.log(validateMove([1, 3]));
-/*
+// console.log(validateMove([1,"n"]))
+// console.log(validateMove([1, 2]));
+// console.log(validateMove([1, 3,7]));
+// console.log(validateMove([1, -9]));
+// console.log(validateMove([1, 3]));
+ /*
     Given 3 parameters:
         - a board (an array of arrays)
         - a move (2 numbers separated by a comma)
