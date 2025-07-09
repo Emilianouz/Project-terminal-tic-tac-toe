@@ -16,8 +16,8 @@
         ];
 */
 function validateMove(move, board) {
-    if(!)
-    if(move.length<2 || move.length>2 ) return "array must have two numbers"
+    if(!move.every(el=>typeof el==="number")) return "array must contain only numbers";
+    if(move.length<2 || move.length>2 ) return "array must have two numbers";
     
 }
 
