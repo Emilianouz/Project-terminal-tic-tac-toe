@@ -16,9 +16,15 @@
         ];
 */
 function validateMove(move, board) {
-    if(!move.every(el=>typeof el==="number")) return "array must contain only numbers";
-    if(move.length<2 || move.length>2 ) return "array must have two numbers";
-    
+    if(!move.every(el=>typeof el==="number")) return "array must contain only numbers,try again" ;
+    if(move.length<2 || move.length>2 ) return "array must have two numbers, try again"  ;
+    for(i=0;i<move.length-1;i++)
+        if(isIncreasing && move[i+1]===move[i]+1){
+            return false;
+        }
+        if(isDecreasing && move[i+1]===move[i]-1){
+            return false;
+        }
 }
 
 /*
