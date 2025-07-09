@@ -25,10 +25,9 @@ function validateMove(move, board) {
             
         if(move[i+1]===move[i]-1) {console.log("The numbers ca't be sequencial");return false};
 }
-    for(let i=0;i<move.length;i++){
-        const value=move[i]
-        if(Math.abs(value)!==value){console.log("The numbers ca't be negative");return false};
-    }
+    if(!move.every(num=>num>=1 && num<=3)){console.log("Number not in range"); return false};
+    
+    
 
     return true       
 }
@@ -36,7 +35,7 @@ console.log(validateMove([1,"n"]))
 console.log(validateMove([1, 2]));
 console.log(validateMove([1, 3,7]));
 console.log(validateMove([1, -9]));
-console.log(validateMove([1, 5]));
+console.log(validateMove([1, 3]));
 /*
     Given 3 parameters:
         - a board (an array of arrays)
