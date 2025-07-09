@@ -15,8 +15,10 @@ test("returns false if the numbers of the array are sequential ", () => {
   expect(validateMove([3, 2, 1])).toEqual(false);
   expect(validateMove([1, 2, 3])).toEqual(false);
 });
-test("returns false if the numbers of the array are negative ", () => {
+
+test("returns false if the numbers of the array are not in range 1-3 ", () => {
   expect(validateMove([-1, 3])).toEqual(false);
   expect(validateMove([-1, -3])).toEqual(false);
-  expect(validateMove([1, -3])).toEqual(false);
+  expect(validateMove([1, 4])).toEqual(false);
 });
+  
