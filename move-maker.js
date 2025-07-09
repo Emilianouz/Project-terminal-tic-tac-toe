@@ -16,17 +16,18 @@
         ];
 */
 function validateMove(move, board) {
-    if(!move.every(el=>typeof el==="number")) return "array must contain only numbers,try again" ;
-    if(move.length<2 || move.length>2 ) return "array must have two numbers, try again"  ;
-    for(i=0;i<move.length-1;i++)
-        if(isIncreasing && move[i+1]===move[i]+1){
-            return false;
-        }
-        if(isDecreasing && move[i+1]===move[i]-1){
-            return false;
-        }
+    if(!move.every(el=>typeof el==="number")) return false;
+       
+     if(move.length<2 || move.length>2 ) return false;
+        
+    for(let i=0;i<move.length-1;i++){
+        if(move[i+1]===move[i]+1) return false;
+            
+        if(move[i+1]===move[i]-1) return false;
 }
-
+    //return true       
+}
+console.log(validateMove([1,3,7]))
 /*
     Given 3 parameters:
         - a board (an array of arrays)
@@ -38,6 +39,10 @@ function validateMove(move, board) {
             - Update the board with the player's value ('X' or 'O') in the correct position
             - Return true
 */
-export function makeMove(board, move, player) {
+function makeMove(board, move, player) {
     return false;
 }
+
+
+
+module.exports=validateMove
