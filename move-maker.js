@@ -16,8 +16,9 @@
         ];
 */
 function validateMove(move, board) {
-    // Implement this at the end if you have time, otherwise you can help your teammates!
-    return true;
+    if(!)
+    if(move.length<2 || move.length>2 ) return "array must have two numbers"
+    
 }
 
 /*
