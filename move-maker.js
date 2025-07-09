@@ -16,18 +16,27 @@
         ];
 */
 function validateMove(move, board) {
-    if(!move.every(el=>typeof el==="number")) return false;
+    if(!move.every(el=>typeof el==="number")) { console.log("Not a number"); return false;};
        
-     if(move.length<2 || move.length>2 ) return false;
+     if(move.length<2 || move.length>2 ) {console.log("The array must have 2 numbers");return false};
         
     for(let i=0;i<move.length-1;i++){
-        if(move[i+1]===move[i]+1) return false;
+        if(move[i+1]===move[i]+1) {console.log("The numbers ca't be sequencial");return false};
             
-        if(move[i+1]===move[i]-1) return false;
+        if(move[i+1]===move[i]-1) {console.log("The numbers ca't be sequencial");return false};
 }
-    //return true       
+    for(let i=0;i<move.length;i++){
+        const value=move[i]
+        if(Math.abs(value)!==value){console.log("The numbers ca't be negative");return false};
+    }
+
+    return true       
 }
-console.log(validateMove([1,3,7]))
+console.log(validateMove([1,"n"]))
+console.log(validateMove([1, 2]));
+console.log(validateMove([1, 3,7]));
+console.log(validateMove([1, -9]));
+console.log(validateMove([1, 5]));
 /*
     Given 3 parameters:
         - a board (an array of arrays)
@@ -45,4 +54,5 @@ function makeMove(board, move, player) {
 
 
 
-module.exports=validateMove
+module.exports = validateMove;
+
