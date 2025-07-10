@@ -1,4 +1,4 @@
-const validateMove=require("../move-maker")
+const {validateMove, makeMove}=require("../move-maker")
 const board = [
   ["X", "_", "_"],
   ["_", "X", "_"],
@@ -39,4 +39,14 @@ test(" verifies if the function allows valid moves in empty spaces", () => {
   expect(validateMove([1, 3], board)).toEqual(true);
   expect(validateMove([2, 2], board)).toEqual(false);
 });
-
+test("makeMove updates the board for valid move",()=>{
+  const board = [
+    ["X", "_", "_"],
+    ["_", "X", "_"],
+    ["O", "O", "X"],
+  ];
+  const move=[1,2];
+  const player='O';
+  const result=makeMove(board,move,player);
+  expect(result).toBe(true);
+})
