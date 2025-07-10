@@ -24,23 +24,39 @@ let board = [
 ];
 let player= 'O'
  function validateMove(move, board) {
-    if (!Array.isArray(move)) return false;
-    if(!move.every(el=>typeof el==="number")) { console.log("Not a number"); return false;};
-       
-      if(move.length<2 || move.length>2 ) {console.log("The array must have 2 numbers");return false};
-      
-      if (!Array.isArray(board[move[0] - 1])) {
-        console.log("Row does not exist");
-        return false;
-      }
-   
-     if(!move.every(num=>num>=1 && num<=3)){console.log("Number not in range"); return false};
-     //if(!board.some(row=>row.includes("_"))) {console.log("No empty space"); return false};
-     
-    if (board[move[0]-1][move[1]-1]!== '_') return false;
+   if (!Array.isArray(move)) {console.log("move must be an array");return false;
+   }
+   if (move.length !==2) {
+     console.log("The array must have 2 numbers");
+     return false;
+   }
 
-    return true ;      
-}
+   if (!move.every((el) => typeof el === "number")) {
+     console.log("Not a number");
+     return false;
+   }
+
+   if (!move.every((num) => num >= 1 && num <= 3)) {
+     console.log("Number not in range");
+     return false;
+   }
+
+   if (!Array.isArray(board[move[0] - 1])) {
+     console.log("Row does not exist");
+     return false;
+   }
+
+   if (typeof board[move[0] - 1][move[1] - 1] === "undefined") {
+     console.log("Cell does not exist");
+     return false;
+   }
+   if (board[move[0] - 1][move[1] - 1] !== "_") {
+     console.log("Cell is not empty");
+     return false;
+   }
+
+   return true;
+ }
 // console.log(validateMove([1,2],[
 //     ["X", "_", "_"],
 //     ["_", "X", "_"],
@@ -80,6 +96,6 @@ let player= 'O'
  
 }
 
-console.log(makeMove(move,board,player))
+console.log(makeMove(board,move,player))
 
-module.exports= validateMove
+module.exports= {validateMove, makeMove};
