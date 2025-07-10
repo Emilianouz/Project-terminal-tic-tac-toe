@@ -15,25 +15,48 @@
             ['O', 'O', 'X']
         ];
 */
-function validateMove(move, board) {
+let move=[1,2]
+
+let board = [
+  ["X", "_", "_"],
+  ["_", "X", "_"],
+  ["O", "O", "X"],
+];
+let player= 'O'
+ function validateMove(move, board) {
+    if (!Array.isArray(move)) return false;
     if(!move.every(el=>typeof el==="number")) { console.log("Not a number"); return false;};
        
-     if(move.length<2 || move.length>2 ) {console.log("The array must have 2 numbers");return false};
-        
-    for(let i=0;i<move.length-1;i++){
-        if(move[i+1]===move[i]+1) {console.log("The numbers ca't be sequencial");return false};
-            
-        if(move[i+1]===move[i]-1) {console.log("The numbers ca't be sequencial");return false};
-}
-    if(!move.every(num=>num>=1 && num<=3)){console.log("Number not in range"); return false};
-    
-    if(!board.some(row=>row.includes("_"))) {console.log("No empty space"); return false};
-    
-    
+      if(move.length<2 || move.length>2 ) {console.log("The array must have 2 numbers");return false};
+      
+      if (!Array.isArray(board[move[0] - 1])) {
+        console.log("Row does not exist");
+        return false;
+      }
+   
+     if(!move.every(num=>num>=1 && num<=3)){console.log("Number not in range"); return false};
+     //if(!board.some(row=>row.includes("_"))) {console.log("No empty space"); return false};
+     
+    if (board[move[0]-1][move[1]-1]!== '_') return false;
 
-    return true       
+    return true ;      
 }
-// console.log(validateMove([1,"n"]))
+// console.log(validateMove([1,2],[
+//     ["X", "_", "_"],
+//     ["_", "X", "_"],
+//     ["O", "O", "X"],
+//   ]))
+//   console.log(
+//     validateMove(
+//       [2, 2],
+//       [
+//         ["X", "_", "_"],
+//         ["_", "X", "_"],
+//         ["O", "O", "X"],
+//       ]
+//     )
+//   );
+//console.log(validateMove([1,"n"]))
 // console.log(validateMove([1, 2]));
 // console.log(validateMove([1, 3,7]));
 // console.log(validateMove([1, -9]));
@@ -49,11 +72,14 @@ function validateMove(move, board) {
             - Update the board with the player's value ('X' or 'O') in the correct position
             - Return true
 */
-function makeMove(board, move, player) {
-    return false;
+ function makeMove(board, move, player) {
+    if(!validateMove(move,board)){
+    return false} else {
+        board[move[0]-1][move[1]-1]=player ; return true
+    }
+ 
 }
 
+console.log(makeMove(move,board,player))
 
-
-module.exports = validateMove;
-
+module.exports= validateMove
