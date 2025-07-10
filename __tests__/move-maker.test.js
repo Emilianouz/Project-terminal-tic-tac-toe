@@ -18,10 +18,6 @@ test("returns false if the array move has more or less than 2 elements", () => {
   expect(validateMove([1, 2, 3, 8], board)).toEqual(false);
   expect(validateMove([], board)).toEqual(false);
 });
-// test("returns false if the numbers of the array are sequential ", () => {
-//   expect(validateMove([3, 2, 1], board)).toEqual(false);
-//   expect(validateMove([1, 2, 3], board)).toEqual(false);
-// });
 
 test("returns false if the numbers of the array are not in range 1-3 ", () => {
   expect(validateMove([-1, 3], board)).toEqual(false);
@@ -38,8 +34,9 @@ test("returns false if any row inside the board hasn't got any free space ", () 
   expect(validateMove([1, 3], board2)).toEqual(false);
   expect(validateMove([1, 3], board2)).toEqual(false);
 });
-test("gdghhrhrthrt ", () => {
+test(" verifies if the function allows valid moves in empty spaces", () => {
   expect(validateMove([2, 3],board)).toEqual(true);
   expect(validateMove([1, 3], board)).toEqual(true);
   expect(validateMove([2, 2], board)).toEqual(false);
 });
+
