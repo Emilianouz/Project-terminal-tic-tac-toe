@@ -1,4 +1,5 @@
 import { checkIfNoMovesLeft } from './board-printer.js';
+//const { checkIfNoMovesLeft } = require('./board-printer.js');
 
 /*
     Example board:
@@ -17,7 +18,12 @@ import { checkIfNoMovesLeft } from './board-printer.js';
     Return true if the player has made a move in all 3 squares in the row
     Otherwise, return false
 */
-function checkRow(board, player, rowNumber) {
+export function checkRow(board, player, rowNumber) {
+    if (board[rowNumber][0] === player && board[rowNumber][1] === player && board[rowNumber][2] === player){
+        return true
+    } else {
+        return false
+    }
 }
 
 /*
@@ -28,7 +34,12 @@ function checkRow(board, player, rowNumber) {
     Return true if the player has made a move in all 3 squares in the column
     Otherwise, return false
 */
-function checkColumn(board, player, columnNumber) {
+export function checkColumn(board, player, columnNumber) {
+    if (board[0][columnNumber] === player && board[1][columnNumber] === player && board[2][columnNumber] === player){
+        return true
+    } else {
+        return false
+    }
 }
 
 /*
@@ -38,8 +49,17 @@ function checkColumn(board, player, columnNumber) {
     Return true if the player has made a move in 3 diagonal squares
     Otherwise, return false
 */
-function checkDiagonal(board, player) {
+export function checkDiagonal(board, player) {
     // It may be easier to use an if statement than a loop here
+    if (board[0][0] === player && board[1][1] === player && board[2][2] === player){
+        return true
+    } else {
+        if (board[0][2] === player && board[1][1] === player && board[2][0] === player){
+            return true
+        } else {
+            return false
+        }
+    } 
 }
 
 
@@ -47,7 +67,7 @@ function checkDiagonal(board, player) {
     There is no need to change any code below this line.
 */
 
-function checkIfPlayerWon(board, player) {
+export function checkIfPlayerWon(board, player) {
     for(let i = 0; i <= 2; i++) {
         if(checkRow(board, player, i) || checkColumn(board, player, i)) {
             return true;
@@ -79,3 +99,10 @@ export function isGameOver(board) {
 
     return false;
 }
+// module.exports = {
+//   isGameOver,
+//   checkRow,
+//   checkColumn,
+//   checkDiagonal,
+//   checkIfPlayerWon,
+// };
