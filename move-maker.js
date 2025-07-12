@@ -15,12 +15,69 @@
             ['O', 'O', 'X']
         ];
 */
-function validateMove(move, board) {
-    // Implement this at the end if you have time, otherwise you can help your teammates!
-    return true;
-}
+let move=[1,2]
 
-/*
+let board = [
+  ["X", "_", "_"],
+  ["_", "X", "_"],
+  ["O", "O", "X"],
+];
+let player= 'O'
+ export function validateMove(move, board) {
+   if (!Array.isArray(move)) {console.log("move must be an array");return false;
+   }
+   if (move.length !==2) {
+     console.log("The array must have 2 numbers");
+     return false;
+   }
+
+   if (!move.every((el) => typeof el === "number")) {
+     console.log("Not a number");
+     return false;
+   }
+
+   if (!move.every((num) => num >= 1 && num <= 3)) {
+     console.log("Number not in range");
+     return false;
+   }
+
+   if (!Array.isArray(board[move[0] - 1])) {
+     console.log("Row does not exist");
+     return false;
+   }
+
+   if (typeof board[move[0] - 1][move[1] - 1] === "undefined") {
+     console.log("Cell does not exist");
+     return false;
+   }
+   if (board[move[0] - 1][move[1] - 1] !== "_") {
+     console.log("Cell is not empty");
+     return false;
+   }
+
+   return true;
+ }
+// console.log(validateMove([1,2],[
+//     ["X", "_", "_"],
+//     ["_", "X", "_"],
+//     ["O", "O", "X"],
+//   ]))
+//   console.log(
+//     validateMove(
+//       [2, 2],
+//       [
+//         ["X", "_", "_"],
+//         ["_", "X", "_"],
+//         ["O", "O", "X"],
+//       ]
+//     )
+//   );
+//console.log(validateMove([1,"n"]))
+// console.log(validateMove([1, 2]));
+// console.log(validateMove([1, 3,7]));
+// console.log(validateMove([1, -9]));
+// console.log(validateMove([1, 3]));
+ /*
     Given 3 parameters:
         - a board (an array of arrays)
         - a move (2 numbers separated by a comma)
@@ -31,6 +88,14 @@ function validateMove(move, board) {
             - Update the board with the player's value ('X' or 'O') in the correct position
             - Return true
 */
-export function makeMove(board, move, player) {
-    return false;
+ export function makeMove(board, move, player) {
+    if(!validateMove(move,board)){
+    return false} else {
+        board[move[0]-1][move[1]-1]=player ; return true
+    }
+ 
 }
+
+console.log(makeMove(board,move,player))
+
+//module.exports= {validateMove, makeMove};
