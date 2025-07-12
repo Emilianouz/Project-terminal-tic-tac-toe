@@ -23,7 +23,7 @@ let board = [
   ["O", "O", "X"],
 ];
 let player= 'O'
- function validateMove(move, board) {
+ export function validateMove(move, board) {
    if (!Array.isArray(move)) {console.log("move must be an array");return false;
    }
    if (move.length !==2) {
@@ -88,7 +88,7 @@ let player= 'O'
             - Update the board with the player's value ('X' or 'O') in the correct position
             - Return true
 */
- function makeMove(board, move, player) {
+ export function makeMove(board, move, player) {
     if(!validateMove(move,board)){
     return false} else {
         board[move[0]-1][move[1]-1]=player ; return true
@@ -98,4 +98,4 @@ let player= 'O'
 
 console.log(makeMove(board,move,player))
 
-module.exports= {validateMove, makeMove};
+//module.exports= {validateMove, makeMove};

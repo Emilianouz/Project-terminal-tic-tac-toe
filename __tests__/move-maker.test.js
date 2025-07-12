@@ -1,5 +1,9 @@
-const {validateMove, makeMove}=require("../move-maker")
-const board = [
+//const {validateMove, makeMove}=require("../move-maker")
+import{
+  validateMove,
+  makeMove
+} from '../move-maker.js';
+const  board = [
   ["X", "_", "_"],
   ["_", "X", "_"],
   ["O", "O", "X"],
